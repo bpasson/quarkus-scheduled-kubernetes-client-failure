@@ -16,7 +16,7 @@ public class KubernetesService {
     @Inject
     KubernetesClient kubernetesClient;
 
-    @Scheduled(every="1m", delayed = "5s")
+    @Scheduled(every="10s", delayed = "5s")
     public void listServices() {
         kubernetesClient.services().inNamespace("default").list().getItems().forEach( s -> {
             log.info("Found service {}", s.getMetadata().getName());
